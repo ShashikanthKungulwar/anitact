@@ -1,3 +1,5 @@
 module.exports.posts=(req,res)=>{
-    return res.end('<h1>route for posts<h1>');
+    return res.render("../views/posts.ejs",{
+        title:"posts"
+    })
 }

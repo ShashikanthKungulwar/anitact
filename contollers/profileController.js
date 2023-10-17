@@ -1,3 +1,5 @@
 module.exports.profile=(req,res)=>{
-    return res.end('<h1>its profile page check</h1>');
+    return res.render("../views/profile.ejs",{
+        title:"profile"
+    });
 }
