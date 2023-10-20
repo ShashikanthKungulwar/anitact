@@ -6,5 +6,6 @@ const usersController=require('../contollers/usersController');
 router.get('/',usersController.users);
 router.get('/profile',profileController.profile);
 router.get('/posts',postsController.posts);
-
+router.get('/sign-up',usersController.signUp);
+router.get('/sign-in',usersController.signIn);
 module.exports=router;
