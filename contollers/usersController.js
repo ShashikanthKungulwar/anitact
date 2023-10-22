@@ -61,3 +61,9 @@ module.exports.createSession = async (req, res) => {
     console.log('user doesnt exist')
     return res.redirect('back');
 }
+
+
+module.exports.signOut=(req,res)=>{
+    res.clearCookie('user_id');
+    res.redirect('sign-in');
+}
