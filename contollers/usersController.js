@@ -7,11 +7,19 @@ module.exports.users=(req,res)=>{
 }
 
 module.exports.signUp=(req,res)=>{
+    if(req.isAuthenticated())
+    {
+        return res.redirect('/');
+    }
     return res.render("../views/sign_up.ejs",{
         title:"sign-up"
     });
 }
 module.exports.signIn=(req,res)=>{
+    if(req.isAuthenticated())
+    {
+        return res.redirect('/');
+    }
     return res.render("../views/sign_in.ejs",{
         title:"sign-in"
     });
@@ -38,5 +46,5 @@ module.exports.create=async (req,res)=>{
 
 
 module.exports.createSession=(req,res)=>{
-    
+    return res.redirect("./profile");
 }
