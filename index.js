@@ -6,6 +6,11 @@ const db=require('./config/mongoose');
 const passport=require('passport');
 const passportLocal=require('./config/passport_local_startegy');
 const session=require('express-session');
+
+
+const MongoStore=require('connect-mongo');
+
+
 const app=express();
 
 
@@ -35,7 +40,11 @@ app.use(session({
     resave:false,
     cookie:{
         maxAge:1000*60*100
-    }
+    },
+    store:MongoStore.create({
+        mongoUrl:'mongodb://127.0.0.1:27017/anitact_development',
+        autoRemove:'disabled'
+    })
 }))
 
 

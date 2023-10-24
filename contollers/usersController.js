@@ -48,3 +48,10 @@ module.exports.create=async (req,res)=>{
 module.exports.createSession=(req,res)=>{
     return res.redirect("./profile");
 }
+
+module.exports.destroySession=(req,res,next)=>{
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
+}
