@@ -1,4 +1,4 @@
-body,html{
-    margin: 0px;
-    /* background-color: aquamarine; */
+html, body {
+  margin: 0px;
+  background-color: aquamarine;
 }

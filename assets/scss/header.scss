@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    align-items: center;
+    span {
+        padding-left: 30px;
+        font-family: sans-serif;
+        font-size: 2.5rem;
+        color: white;
+        img {
+            height: 1.2em;
+            width: 1.2em;
+            position: relative;
+            top:5px;
+            left:-5px;
+            background: none;
+        }
+    }
+
+    #navigationList {
+        li {
+            list-style: none;
+            a{
+            text-decoration: none !important;
+            color: white !important;
+            }
+        }
+    }
+}

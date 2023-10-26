@@ -6,7 +6,7 @@ const db=require('./config/mongoose');
 const passport=require('passport');
 const passportLocal=require('./config/passport_local_startegy');
 const session=require('express-session');
-
+const sassMiddleware=require('node-sass-middleware');
 
 const MongoStore=require('connect-mongo');
 
@@ -15,6 +15,15 @@ const app=express();
 
 
 
+app.use(sassMiddleware(
+    {
+        src:'./assets/scss',
+        dest:"./assets/css",
+        debug:true,
+        prefix:'/css',
+        outputStyle:"expanded"
+    }
+))
 
 app.use(express.urlencoded());
 app.use(cookieParser());

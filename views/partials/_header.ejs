@@ -1,9 +1,13 @@
+<link href="/css/header.css" rel="stylesheet" type="text/css"/>
 <header>
-    this is header
-    <ul>
+    <span>Anitact <img src="/images/logo.png" />
+    </span>
+    <ul id="navigationList">
         <% if(locals.user){ %>
             <li>
-                <a href="/users/profile"><%=user.name %></a>
+                <a href="/users/profile">
+                    <%=user.name %>
+                </a>
             </li>
             <li>
                 <a href="/users/sign-out">sign out</a>

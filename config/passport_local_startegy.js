@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
     async function(email, password, done) {
         //find the user and establish the functionality
         Users.findOne({ email }).then((user)=>{
-            console.log(user);
+            // console.log(user);
             if(!user || user.password!=password)
             {
                 console.log("password didnt matched");
@@ -39,7 +39,6 @@ passport.deserializeUser((user_id,done)=>{
             console.log('user not found with the id');
             return done(null,false);
         }
-        console.log('user id found user',user);
         return done(null,user);
     }).catch(err=>{
         console.log('error occured while finding by id in deserializer');
@@ -50,7 +49,6 @@ passport.deserializeUser((user_id,done)=>{
 passport.checkAuthentication=(req,res,next)=>{
     if(req.isAuthenticated())
     {   
-        console.log(123);
         return next();
     }
     return res.redirect('/users/sign-in');
