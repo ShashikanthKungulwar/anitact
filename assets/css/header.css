@@ -1,12 +1,15 @@
 header {
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  background-image: linear-gradient(-20deg, #151616 0%, #0b0328 100%);
+  box-shadow: 8px 15px 43px 10px rgba(0, 0, 0, 0.1);
   align-items: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 header span {
-  padding-left: 30px;
+  padding-left: 50px;
   font-family: sans-serif;
   font-size: 2.5rem;
   color: white;
@@ -21,11 +24,29 @@ header span img {
   background: none;
 }
 
-header #navigationList li {
-  list-style: none;
+header ul {
+  margin-right: 50px;
 }
 
-header #navigationList li a {
-  text-decoration: none !important;
-  color: white !important;
+header ul li {
+  list-style: none;
+  display: inline;
+  width: 500px;
+  background-color: white;
+  box-shadow: inset;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding-inline: 10px;
+  padding-block: 5px;
+  text-align: center;
+  box-shadow: inset 0px 6px 11px 0px rgba(0, 0, 0, 0.8);
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #2b5876;
+}
+
+header ul li:hover {
+  box-shadow: 0px 0px 11px 5px rgba(179, 97, 230, 0.8);
 }
