@@ -1,0 +1,45 @@
+
+
+/* Style for input fields */
+form {
+    height: 400px;
+    
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255,0.2);
+    justify-content: center;
+    align-items: center;
+    box-shadow: -0.5px -12px 18.5px -0.5px #0f1723;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    input {
+        border: 1px solid #555;
+        /* Border color */
+        border-radius: 5px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* Style for buttons */
+    button {
+        background-color: rgba(10, 10, 10,0.8);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0px 0px 11px 5px rgba(179, 97, 230, 0.8);
+        }
+    }
+}

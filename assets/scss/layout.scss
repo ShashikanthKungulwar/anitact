@@ -1,4 +1,16 @@
-html,body{
-    margin: 0px;
-    // background-color: aquamarine; 
+html {
+
+    margin: 0;
+    height: 100%;
+    body {
+        margin: inherit;
+        background-image: url("/images/wallpaper.jpg");
+        opacity: 0.5px;
+        background-size: cover;
+        /* Adjust background size to cover the entire viewport */
+        background-position: center;
+        /* Adjust background position as needed */
+        background-repeat: no-repeat;
+        /* Prevent background image from repeating */
+    }
 }

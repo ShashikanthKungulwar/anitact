@@ -1,8 +1,13 @@
 header {
   display: flex;
+  position: fixed;
+  top: 0px;
+  width: 100%;
   justify-content: space-between;
-  background-image: linear-gradient(-20deg, #151616 0%, #0b0328 100%);
-  box-shadow: 8px 15px 43px 10px rgba(0, 0, 0, 0.1);
+  background: #000000;
+  padding: 5px;
+  background: linear-gradient(177deg, #000000 0%, #162230 100%);
+  box-shadow: -0.5px 12px 18.5px -0.5px #0f1723;
   align-items: center;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -30,21 +35,20 @@ header ul {
 
 header ul li {
   list-style: none;
-  display: inline;
-  width: 500px;
-  background-color: white;
-  box-shadow: inset;
+  display: inline-block;
+  background-color: #60667f00;
   margin-right: 10px;
   border-radius: 10px;
   padding-inline: 10px;
   padding-block: 5px;
   text-align: center;
-  box-shadow: inset 0px 6px 11px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 6px 11px 0px rgba(0, 0, 0, 0.8), 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
+  width: 100px;
 }
 
 header ul li a {
   text-decoration: none;
-  color: #2b5876;
+  color: #c6d4dd;
 }
 
 header ul li:hover {
