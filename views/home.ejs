@@ -1,8 +1,18 @@
 <h1>anitact/home</h1>
+<link href="/css/home.css" rel="stylesheet">
 <div>
     <form action="/posts/create" method="POST">
         <h1>Posts</h1>
         <textarea placeholder="type here" name="content" required></textarea>
         <button>SUBMIT</button>
     </form>
+</div>
+<div id="posts-list-container">
+    <% for(post of posts) {%>
+        <p>
+            <span>name:<%=post.user.name%></span>
+            <br>
+            <span>content:<%=post.content%></span>
+        </p>
+        <%}%>
 </div>
