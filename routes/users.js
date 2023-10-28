@@ -10,7 +10,6 @@ router.get('/posts',postsController.posts);
 router.get('/sign-up',usersController.signUp);
 router.get('/sign-in',usersController.signIn);
 router.post('/create',usersController.create);
-
 //user middle ware
 router.get('/sign-out',usersController.destroySession);
 router.post('/create-session',passport.authenticate(
