@@ -1,6 +1,7 @@
 html {
   margin: 0;
   height: 100%;
+  min-width: 300px;
 }
 
 html body {
@@ -12,5 +13,11 @@ html body {
   background-position: center;
   /* Adjust background position as needed */
   background-repeat: no-repeat;
+  background-attachment: fixed;
   /* Prevent background image from repeating */
+}
+
+html body main {
+  overflow-y: visible;
+  padding-bottom: 55px;
 }

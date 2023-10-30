@@ -9,7 +9,7 @@
     </title>
     <script src="https://kit.fontawesome.com/d0f5b43b47.js" crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="/css/layout.css" />
-    <link href="/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/header.css" rel="stylesheet" type="text/css" />
     <link href="/css/footer.css" rel="stylesheet" type="text/css">
     <%- style %>
 </head>
@@ -17,10 +17,12 @@
 <body>
     <%- include('./partials/_header.ejs') %>
         <!-- <h1>anitact/home</h1> -->
-        <%- body %>
-            <%- include('./partials/_footer.ejs') %>
+        <main>
+            <%- body %>
+        </main>
+        <%- include('./partials/_footer.ejs') %>
 
-                <%- script %>
+            <%- script %>
 </body>
 
 </html>
