@@ -1,15 +1,33 @@
 <h1>anitact/home</h1>
+
 <link href="/css/home.css" rel="stylesheet">
-<div>
-    <% if(locals.user){ %>
-        <form action="/posts/create" method="POST">
-            <h1>Posts</h1>
-            <textarea placeholder="type here" name="content" required></textarea>
-            <button>SUBMIT</button>
-        </form>
-        <%}%>
-</div>
-<div id="posts-list-container">
+<section>
+    <div>
+        <% if(locals.user){ %>
+            <form action="/posts/create" method="POST">
+                <h1>Posts</h1>
+                <textarea placeholder="type here" name="content" required></textarea>
+                <button>SUBMIT</button>
+            </form>
+            <%}%>
+    </div>
+    <div id="posts-list-container">
         <%- include('partials/homePartials/_post') %>
-            
-</div>
+
+    </div>
+</section>
+<% if(locals.user) { %>
+    <section id="friends-list">
+        <% if(locals.users_list){ %>
+            <ul>
+                <%for(let user1 of users_list){%>
+                    <a href="/users/profile/<%=user1.id%>">
+                        <li>
+                            <%=user1.name%>
+                        </li>
+                    </a>
+                    <%}%>
+            </ul>
+            <%}%>
+    </section>
+    <%}%>

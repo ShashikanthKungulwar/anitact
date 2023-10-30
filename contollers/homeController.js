@@ -1,16 +1,17 @@
 const Posts = require("../models/post");
-
+const Users = require('../models/user');
 module.exports.home = async (req, res) => {
 
     try {
         var posts = await Posts.find({})
-        .populate('user')
-        .populate({
-            path:"comments",
-            populate:{
-                path:'user'
-            }
-        }).exec();
+            .populate('user')
+            .populate({
+                path: "comments",
+                populate: {
+                    path: 'user'
+                }
+            }).exec();
+        var users =await Users.find({}).exec();
     }
     catch (error) {
         console.log(error);
@@ -18,7 +19,8 @@ module.exports.home = async (req, res) => {
     finally {
         return res.render("../views/home.ejs", {
             title: "home",
-            posts
+            posts,
+            users_list:users
         });
     }
 }

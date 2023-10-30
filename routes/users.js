@@ -5,6 +5,7 @@ const postsController=require('../contollers/postsController');
 const usersController=require('../contollers/usersController');
 const passport = require('passport');
 router.get('/',usersController.users);
+router.get('/profile/:id',passport.checkAuthentication,profileController.profile);
 router.get('/profile',passport.checkAuthentication,profileController.profile);
 router.get('/posts',postsController.posts);
 router.get('/sign-up',usersController.signUp);
