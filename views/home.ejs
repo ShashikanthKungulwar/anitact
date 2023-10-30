@@ -12,27 +12,31 @@
 <div id="posts-list-container">
     <% for(post of posts) {%>
         <p>
-            <span>name:<%=post.user.name%></span>
-            <br>
-            <span>content:<%=post.content%></span>
-        <div class="comment-section">
-            <% if(locals.user) {%>
-                <form action="/comments/create" method="post">
-                    <input type="text" name="content" placeholder="add comment" required />
-                    <input type="hidden" name="post" value="<%= post.id %>" />
-                    <button>add</button>
-                </form>
-                <%}%>
-                    <div class="comments-list">
-                        <%if(post.comments){%>
-                            <% for(comment of post.comments) {%>
-                                <div class="comment">
-                                    comment:<%=comment.content %>
-                                        user:<%=comment.user.name%>
+            <% if(locals.user && locals.user.id==post.user.id) {%>
+                <a href="/posts/destroy/<%=post.id %>">X</a>
+                <%}%>   
+                    <span>name:<%=post.user.name%></span>
+                    <br>
+                    <span>content:<%=post.content%></span>
+                    <div class="comment-section">
+                        <% if(locals.user) {%>
+                            <form action="/comments/create" method="post">
+                                <input type="text" name="content" placeholder="add comment" required />
+                                <input type="hidden" name="post" value="<%= post.id %>" />
+                                <button>add</button>
+                            </form>
+                            <%}%>
+                                <div class="comments-list">
+                                    <%if(post.comments){%>
+                                        <% for(comment of post.comments) {%>
+                                            <div class="comment">
+                                                <a href="/comments/destroy/<%=comment.id %>">X</a>
+                                                comment:<%=comment.content %>
+                                                    user:<%=comment.user.name%>
+                                            </div>
+                                            <%}}%>
                                 </div>
-                                <%}}%>
                     </div>
-        </div>
         </p>
         <%}%>
 </div>

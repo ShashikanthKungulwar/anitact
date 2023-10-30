@@ -21,3 +21,22 @@ module.exports.create = async (req, res) => {
     }
     return res.redirect('/');
 }
+
+
+module.exports.destroy = async (req, res) => {
+    const comment = await Comments.findById(req.params.id).exec();
+    if (comment) {
+        try {
+            const post = await Posts.findById(comment.post);
+            if (comment.user == req.user.id || post.user == req.user.id) {
+                post.comments.pull(comment.id);
+                post.save();
+                await Comments.findByIdAndDelete(comment.id);
+                console.log('deleted comment successfully');
+            }
+        } catch (error) {
+            console.log('error occured while deleting comment', error)
+        }
+    }
+    return res.redirect('back');
+}
