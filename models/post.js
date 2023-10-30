@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema({
     },
     comments: [{
         type: mongoose.Types.ObjectId,
-        ref: 'Posts'
+        ref: 'Comments'
     }]
 }, {
     timestamps: true
