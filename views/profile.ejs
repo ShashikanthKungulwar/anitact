@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="/css/profile.css" />
     <table>
         <tr>
-
             <h2>
                 <td>email:</td>
                 <td>
@@ -12,7 +11,6 @@
             </h2>
         </tr>
         <tr>
-
             <h2>
                 <td>name:</td>
                 <td>
@@ -20,6 +18,8 @@
                 </td>
             </h2>
         </tr>
-
     </table>
+    <% if(locals.user_profile.id==locals.user.id) {%>
+        <a href="update">click here to update your profile</a>
+    <%}%>
 </div>

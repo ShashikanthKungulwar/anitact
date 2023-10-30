@@ -52,3 +52,11 @@ module.exports.destroySession = (req, res, next) => {
     });
 }
 
+module.exports.update=async (req,res)=>{
+    if(req.user.password == req.body.password)
+    {
+        await Users.findByIdAndUpdate(req.user.id,req.body);
+        return res.redirect('/users/profile');
+    }
+    return res.redirect('back');
+}

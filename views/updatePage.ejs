@@ -1,0 +1,10 @@
+<div>
+    <link href="/css/form.css" rel="stylesheet"/>
+    <form method="post" action="/users/update">
+        <h1>Update Form</h1>
+        <input name="email" value="<%=user.email%>" required placeholder="enter tour email" type="email" />
+        <input name="name" value="<%=user.name%>" required placeholder="enter your name"/>
+        <input name="password" required  placeholder="enter your password"/>
+        <button>update</button>
+    </form>
+</div>
