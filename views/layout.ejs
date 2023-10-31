@@ -8,9 +8,13 @@
         <%= title %>
     </title>
     <script src="https://kit.fontawesome.com/d0f5b43b47.js" crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="/css/layout.css" />
+    
     <link href="/css/header.css" rel="stylesheet" type="text/css" />
     <link href="/css/footer.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/css/layout.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <%- style %>
 </head>
 
@@ -18,17 +22,44 @@
     <%- include('partials/layoutPartials/_header.ejs') %>
         <!-- <h1>anitact/home</h1> -->
         <main>
-            <% if(locals.flash && (flash.success.length>0|| flash.error.length>0)) {%>
+
+            <!-- <% if(locals.flash && (flash.success.length>0|| flash.error.length>0)) {%>
                 <div>
-                    <%= (flash.success.length)?flash.success:flash.error %>
+                    <%= flash.success || flash.error %>
                 </div>
-            <%}%>
+                <%}%> -->
             <%- body %>
         </main>
         <%- include('partials/layoutPartials/_footer.ejs') %>
 
             <%- script %>
-            <script src="/js/layout.js" ></script>
+                <script>
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": true,
+                        "progressBar": true,
+                        "preventDuplicates": false,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "10000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        "opacity": 1
+                    };
+                    toastr.options.showMethod = 'slideDown';
+                    toastr.options.hideMethod = 'slideUp';
+                    toastr.options.closeMethod = 'slideUp';
+                        <% if (locals.flash && flash.success.length > 0) {%>
+                        toastr.success("<%=flash.success%>");
+            <%}%>
+            <% if (locals.flash && flash.error.length > 0) {%>
+
+                        toastr.error("<%=flash.error%>");
+            <%}%>
+                </script>
 </body>
 
 </html>

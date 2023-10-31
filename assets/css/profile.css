@@ -2,7 +2,7 @@ body {
   position: relative;
 }
 
-body div {
+body div#profile {
   font-size: 2em;
   text-align: center;
   background-color: rgba(250, 250, 255, 0.4);
@@ -16,16 +16,16 @@ body div {
   transform: translate(-50%, -50%);
 }
 
-body div table {
+body div#profile table {
   font-size: 1.5em;
   font-weight: bold;
 }
 
-body div table td {
+body div#profile table td {
   text-align: left;
 }
 
-body div a {
+body div#profile a {
   color: inherit;
   border: #0f1723 dashed 1px;
 }

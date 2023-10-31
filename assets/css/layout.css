@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* Style the title and message text */
   margin: inherit;
   background-image: url("/images/wallpaper.jpg");
   opacity: 0.5px;
@@ -19,6 +20,23 @@ body {
 
 body * {
   box-sizing: border-box;
+}
+
+body .toast {
+  /* Adjust the last value for opacity */
+  color: white;
+  /* Text color */
+  opacity: 1 !important;
+  /* Set to 1 for full opacity */
+  box-shadow: none !important;
+}
+
+body .toast-title {
+  font-weight: bold;
+}
+
+body .toast-message {
+  font-weight: normal;
 }
 
 body a {
