@@ -1,11 +1,25 @@
-<h1>anitact/home</h1>
-
 <link href="/css/home.css" rel="stylesheet">
-<section>
+<section id="navigation-container">
+    <ul>
+        
+        <h3><%= locals.user && locals.user.name %></h3>
+        <a href="/">
+            <li><i class="fa-solid fa-house" style="color: #ffffff;"></i> Home</li>
+        </a>
+        <a href="/users/profile">
+            <li><i class="fa-solid fa-user" style="color: #ffffff;"></i> &nbsp;Profile</li>
+        </a>
+        <a href="/users/update">
+            <li><i class="fa-solid fa-pen" style="color: #ffffff;"></i> &nbsp;Update Profile</li>
+        </a>
+    </ul>
+</section>
+<section id="posts-container">
     <div>
+        <h1>Posts</h1>
         <% if(locals.user){ %>
-            <form action="/posts/create" method="POST">
-                <h1>Posts</h1>
+            <form action="/posts/create" method="POST" id="postForm">
+                
                 <textarea placeholder="type here" name="content" required></textarea>
                 <button>SUBMIT</button>
             </form>
@@ -15,11 +29,14 @@
         <%- include('partials/homePartials/_post') %>
 
     </div>
+
+
 </section>
 <% if(locals.user) { %>
     <section id="friends-list">
         <% if(locals.users_list){ %>
             <ul>
+                <h3>Friends</h3>
                 <%for(let user1 of users_list){%>
                     <a href="/users/profile/<%=user1.id%>">
                         <li>

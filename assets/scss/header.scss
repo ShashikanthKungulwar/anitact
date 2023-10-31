@@ -1,55 +1,52 @@
-header {
-    display: flex;
-    position: sticky;
-    top:0px;
-    width: 100%;
-    justify-content: space-between;
-    background: #000000;
-    padding: 5px;
-    box-sizing: border-box;
-    background: linear-gradient(177deg, #000000 0%, #162230 100%);
-    box-shadow: -0.5px 12px 18.5px -0.5px #0f1723;
-    align-items: center;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    span {
-        padding-left: 50px;
-        font-family: sans-serif;
-        font-size: 2.5rem;
-        color: white !important;
-        img {
-            height: 1.2em;
-            width: 1.2em;
-            position: relative;
-            top: 5px;
-            left: -5px;
-            background: none;
-        }
-    }
+    header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        background: #000000;
+        padding: 5px;
+        box-sizing: border-box;
+        background: linear-gradient(177deg, #000000 0%, #162230 100%);
+        box-shadow: -0.5px 12px 18.5px -0.5px #0f1723;
+        align-items: center;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
 
-    ul {
-        margin-right: 50px;
+        span {
+            padding-left: 50px;
+            font-family: sans-serif;
+            font-size: 2.5rem;
+            color: white !important;
 
-        li {
-            list-style: none;
-            display: inline-block;
-            background-color: #60667f00;
-            margin-right: 10px;
-            border-radius: 10px;
-            padding-inline: 10px;
-            padding-block: 5px;
-            text-align: center;
-            box-shadow: inset 0px 6px 11px 0px rgba(0, 0, 0, 0.8),0px 0px 10px 3px rgba(0, 0, 0, 0.4);
-            width:100px;
-            a {
-                text-decoration: none;
-                color: #c6d4dd;
+            img {
+                height: 1.2em;
+                width: 1.2em;
+                position: relative;
+                top: 5px;
+                left: -5px;
+                background: none;
             }
+        }
 
-            &:hover {
-                box-shadow: 0px 0px 11px 5px rgba(179, 97, 230, 0.8);
+        ul {
+            margin-right: 50px;
 
+            li {
+                list-style: none;
+                display: inline-block;
+                background-color: #60667f00;
+                margin-right: 10px;
+                border-radius: 10px;
+                padding-inline: 10px;
+                padding-block: 5px;
+                text-align: center;
+                box-shadow: inset 0px 6px 11px 0px rgba(0, 0, 0, 0.8), 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
+                width: 100px;
+
+
+                &:hover {
+                    box-shadow: 0px 0px 11px 5px rgba(179, 97, 230, 0.8);
+
+                }
             }
         }
     }
-}

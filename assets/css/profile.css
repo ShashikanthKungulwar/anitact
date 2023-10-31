@@ -24,3 +24,8 @@ body div table {
 body div table td {
   text-align: left;
 }
+
+body div a {
+  color: inherit;
+  border: #0f1723 dashed 1px;
+}
