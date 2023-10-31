@@ -5,15 +5,16 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy({
-    usernameField: 'email'},
-    async function(email, password, done) {
+    usernameField: 'email',
+    passReqToCallback:true
+},
+    async function(req,email, password, done) {
         //find the user and establish the functionality
         Users.findOne({ email }).then((user)=>{
             // console.log(user);
             if(!user || user.password!=password)
             {
-                console.log("password didnt matched");
-                // req.flash('success','successfylly logged out');
+                req.flash('error','invalid credentials');
                 return done(null,false);
             }
             return done(null,user);
