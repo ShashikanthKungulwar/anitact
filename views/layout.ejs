@@ -18,6 +18,11 @@
     <%- include('partials/layoutPartials/_header.ejs') %>
         <!-- <h1>anitact/home</h1> -->
         <main>
+            <% if(locals.flash && (flash.success.length>0|| flash.error.length>0)) {%>
+                <div>
+                    <%= (flash.success.length)?flash.success:flash.error %>
+                </div>
+            <%}%>
             <%- body %>
         </main>
         <%- include('partials/layoutPartials/_footer.ejs') %>

@@ -10,7 +10,7 @@ const sassMiddleware = require('node-sass-middleware');
 const bodyParser=require('body-parser');
 const MongoStore = require('connect-mongo');
 const flash=require('connect-flash');
-
+const flashMiddleware=require('./middlewares/flashMiddleware');
 const app = express();
 
 
@@ -64,7 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
-
+app.use(flashMiddleware.setFlash);
 app.use('/', require('./routes/index'));
 
 

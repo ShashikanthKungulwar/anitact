@@ -13,6 +13,7 @@ passport.use(new LocalStrategy({
             if(!user || user.password!=password)
             {
                 console.log("password didnt matched");
+                // req.flash('success','successfylly logged out');
                 return done(null,false);
             }
             return done(null,user);
