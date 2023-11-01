@@ -18,13 +18,14 @@
     <div>
         <h1>Posts</h1>
         <% if(locals.user){ %>
-            <form action="/posts/create" method="POST" id="postForm">
+            <form action="/posts/create" method="POST" id="postForm" onsubmit="return handlePostSubmit(event)" >
                 
                 <textarea placeholder="type here" name="content" required></textarea>
                 <button>SUBMIT</button>
             </form>
             <%}%>
     </div>
+
     <div id="posts-list-container">
         <%- include('partials/homePartials/_post') %>
 
@@ -32,6 +33,8 @@
 
 
 </section>
+
+
 <% if(locals.user) { %>
     <section id="friends-list">
         <% if(locals.users_list){ %>

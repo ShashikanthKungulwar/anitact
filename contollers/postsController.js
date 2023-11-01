@@ -1,5 +1,6 @@
 const Posts=require('../models/post');
 const Comments=require('../models/comments');
+const { response } = require('express');
 module.exports.posts=(req,res)=>{
     return res.render("../views/posts.ejs",{
         title:"posts"
@@ -10,12 +11,26 @@ module.exports.posts=(req,res)=>{
 module.exports.create=async (req,res)=>{
     if (req.user) {
         try {
-            await Posts.create({
+            let post=await Posts.create({
                 ...req.body,
                 user: req.user.id
             })
+            if(req.xhr)
+            {
+                await post.populate('user');
+                // req.flash('success','post created successfully');
+                return res.status(200).json({
+                    data:{
+                        post:{...post._doc,user:{
+                            _id:post.user._id,
+                            name:post.user.name
+                        }},
+                        message:"post created"
+                    }
+                });
+            }
             console.log('success in posting')
-            req.flash('success','post created successfully');
+            
         }
         catch(error){
             req.flash('error','please try again to post');
@@ -37,8 +52,14 @@ module.exports.destroy = async (req, res) => {
     const post = await Posts.findById(req.params.id).exec();
     if (post && post.user == req.user.id) {
         await Comments.deleteMany({post:req.params.id});
-        await Posts.findByIdAndDelete(post.id);
-        req.flash('success','deleted post successfully');
+        var deletePost=await Posts.findByIdAndDelete(post.id);
+        // req.flash('success','deleted post successfully');
+    }
+    if(req.xhr){
+       
+        return res.status(200).json({
+            data:deletePost.id
+        })
     }
 }catch(error){
 req.flash('error','try to delete the post again');
