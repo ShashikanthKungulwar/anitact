@@ -1,5 +1,5 @@
 <%if(post.comments){%>
-    <ul>
+    <ul id="<%= post._id %>comments">
         <% for(comment of post.comments) {%>
             <li class="comment">
                 <% if(locals.user && (locals.user.id==post.user.id || comment.user.id==user.id)) {%>

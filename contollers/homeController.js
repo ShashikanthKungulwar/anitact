@@ -11,6 +11,9 @@ module.exports.home = async (req, res) => {
                     path: 'user'
                 }
             }).exec();
+
+        // posts.commnets.sort('-createdAt');not woriking find later
+
         var users =await Users.find({}).exec();
     }
     catch (error) {
