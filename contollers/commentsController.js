@@ -14,8 +14,10 @@ module.exports.create = async (req, res) => {
             post.comments.push(comment);
             post.save();
             console.log("comment added to the post");
+            req.flash('success','comment posted')
         }
         catch (error) {
+            req.flash('error','comment failed to post')
             console.error(error, "error in posting the comment")
         }
     }
@@ -32,9 +34,13 @@ module.exports.destroy = async (req, res) => {
                 post.comments.pull(comment.id);
                 post.save();
                 await Comments.findByIdAndDelete(comment.id);
+
+                req.flash('success','comment deleted');
+
                 console.log('deleted comment successfully');
             }
         } catch (error) {
+            req.flash('error','comment not deleted')
             console.log('error occured while deleting comment', error)
         }
     }

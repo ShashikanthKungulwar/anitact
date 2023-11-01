@@ -14,7 +14,6 @@ module.exports.profile=async (req,res)=>{
 
 
 module.exports.update=(req,res)=>{
-    console.log(123);
     return res.render("../views/updatePage.ejs",{
         title:"update"
     });

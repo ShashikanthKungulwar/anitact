@@ -8,7 +8,7 @@
         <%= title %>
     </title>
     <script src="https://kit.fontawesome.com/d0f5b43b47.js" crossorigin="anonymous"></script>
-    
+
     <link href="/css/header.css" rel="stylesheet" type="text/css" />
     <link href="/css/footer.css" rel="stylesheet" type="text/css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
@@ -56,7 +56,6 @@
                         toastr.success("<%=flash.success%>");
             <%}%>
             <% if (locals.flash && flash.error.length > 0) {%>
-
                         toastr.error("<%=flash.error%>");
             <%}%>
                 </script>
