@@ -1,9 +1,9 @@
 <%if(post.comments){%>
     <ul id="<%= post._id %>comments">
         <% for(comment of post.comments) {%>
-            <li class="comment">
+            <li class="comment" id="<%=comment._id%>">
                 <% if(locals.user && (locals.user.id==post.user.id || comment.user.id==user.id)) {%>
-                <a href="/comments/destroy/<%=comment.id %>">X</a>
+                <a href="/comments/destroy/<%=comment.id %>" onclick="return handleCommnetDelete(event)">X</a>
                 <%}%>
                 comment:<%=comment.content %>
                     user:<%=comment.user.name%>

@@ -47,6 +47,12 @@ module.exports.destroy = async (req, res) => {
 
                 console.log('deleted comment successfully');
             }
+            if(req.xhr)
+            {
+                return res.status(200).json({
+                    data:comment.id
+                })
+            }
         } catch (error) {
             req.flash('error','comment not deleted')
             console.log('error occured while deleting comment', error)

@@ -33,14 +33,14 @@
                 <span>content:${post.content}</span>
                 <div class="comment-section">
                 
-                        <form action="/comments/create" method="post">
+                        <form action="/comments/create" method="post" onsubmit="return handleCommentPosting(event)">
                             <input type="text" name="content" placeholder="add comment" required />
                             <input type="hidden" name="post" value="${post._id}" />
                             <button>add</button>
                         </form>
                         
                             <div class="comments-list">
-                            <ul>
+                            <ul id="${post._id}comments">
                             </ul>
                             </div>
                 </div>
@@ -85,11 +85,11 @@
     }
 
     function addCommnetToPost(comment){
-        console.log(`${comment.post}comment`);
+        console.log(`${comment.post}comments`);
         const ulRef=$(`#${comment.post}comments`)
-        ulRef.append(`<li class="comment">
+        ulRef.append(`<li class="comment" id="${comment._id}">
             
-                <a href="/comments/destroy/${comment._id}">X</a>
+                <a href="/comments/destroy/${comment._id}" onclick="return handleCommnetDelete(event)" >X</a>
                 comment:${comment.content}
                     user:${comment.user.name}
             </li>`)
@@ -97,7 +97,17 @@
 
 
     function handleCommnetDelete(event){
-
+        event.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: $(event.target).prop('href'),
+            success: (response) => {
+                document.getElementById(response.data).remove();
+            },
+            error: (error) => {
+                console.log(error.responseText);
+            }
+        })
     }
 }
 
