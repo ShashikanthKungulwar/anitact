@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const multer = require('multer');
-
 const AVATAR_PATH = path.join('/uploads/users/avatars');
 console.log(path.join(__dirname + '/..' + AVATAR_PATH));
+
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
-//as we are setting multer for user model we are not storing the multer config in config folder but in this file
+//as we are setting multer for use
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

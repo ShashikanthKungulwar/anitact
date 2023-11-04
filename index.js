@@ -37,7 +37,7 @@ app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
 
-
+app.use('/uploads',express.static("uploads"));
 
 app.use(express.static("./assets"));
 app.set('view engine', 'ejs');
