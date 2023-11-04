@@ -15,11 +15,12 @@ module.exports.create = async (req, res) => {
             post.comments.push(comment);
             post.save();
             console.log("comment added to the post");
-            req.flash('success','comment posted')
+            // req.flash('success','comment posted')
             await comment.populate('user');
             if(req.xhr){
                 return res.status(200).json({
-                    data:comment
+                    data:comment,
+                    message:"comment successfully created"
                 });
             }
         }
@@ -42,15 +43,14 @@ module.exports.destroy = async (req, res) => {
                 post.comments.pull(comment.id);
                 post.save();
                 await Comments.findByIdAndDelete(comment.id);
-
-                req.flash('success','comment deleted');
-
+                // req.flash('success','comment deleted');
                 console.log('deleted comment successfully');
             }
             if(req.xhr)
             {
                 return res.status(200).json({
-                    data:comment.id
+                    data:comment.id,
+                    message:"comment deleted successfully"
                 })
             }
         } catch (error) {

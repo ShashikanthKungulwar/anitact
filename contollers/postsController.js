@@ -58,7 +58,8 @@ module.exports.destroy = async (req, res) => {
     if(req.xhr){
        
         return res.status(200).json({
-            data:deletePost.id
+            data:deletePost.id,
+            message:"post deleted successfully"
         })
     }
 }catch(error){

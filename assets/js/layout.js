@@ -7,9 +7,11 @@
             type: "POST",
             url: "/posts/create",
             data: $(event.target).serialize(),
-            success: (responce) => {
-                console.log(responce);
-                addPostToHome(responce.data.post);
+            success: (response) => {
+                // console.log(response.json());
+                addPostToHome(response.data.post);
+                toastr.success(response.data.message)
+                // console.log(response.flash);
                 // $(event.target).reset();
             },
             error: (error) => {
@@ -57,6 +59,7 @@
             success: (response) => {
                 // deletePost(response.id)
                 // console.log(response.data);
+                toastr.success(response.message)
                 document.getElementById(response.data).remove();
             },
             error: (error) => {
@@ -76,7 +79,9 @@
             url:`/comments/create`,
             success:(response)=>{
                 // console.log(response.data)
-                addCommnetToPost(response.data,$(event.target));
+                toastr.success(response.message)
+                addCommnetToPost(response.data);
+                // toastr.success(response.data.message);
             },
             error:(error)=>{
                 console.log(error.responseText);
@@ -102,7 +107,9 @@
             type: "GET",
             url: $(event.target).prop('href'),
             success: (response) => {
+                toastr.success(response.message)
                 document.getElementById(response.data).remove();
+                
             },
             error: (error) => {
                 console.log(error.responseText);
