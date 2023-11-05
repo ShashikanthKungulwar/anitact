@@ -69,29 +69,29 @@
     }
 
 
-    function handleCommentPosting(event){
+    function handleCommentPosting(event) {
         event.preventDefault();
         // console.log($(event.target).prop('action'));
 
         $.ajax({
-            type:"POST",
-            data:$(event.target).serialize(),
-            url:`/comments/create`,
-            success:(response)=>{
+            type: "POST",
+            data: $(event.target).serialize(),
+            url: `/comments/create`,
+            success: (response) => {
                 // console.log(response.data)
                 toastr.success(response.message)
                 addCommnetToPost(response.data);
                 // toastr.success(response.data.message);
             },
-            error:(error)=>{
+            error: (error) => {
                 console.log(error.responseText);
             }
         })
     }
 
-    function addCommnetToPost(comment){
+    function addCommnetToPost(comment) {
         console.log(`${comment.post}comments`);
-        const ulRef=$(`#${comment.post}comments`)
+        const ulRef = $(`#${comment.post}comments`)
         ulRef.append(`<li class="comment" id="${comment._id}">
             
                 <a href="/comments/destroy/${comment._id}" onclick="return handleCommnetDelete(event)" >X</a>
@@ -101,7 +101,7 @@
     }
 
 
-    function handleCommnetDelete(event){
+    function handleCommnetDelete(event) {
         event.preventDefault();
         $.ajax({
             type: "GET",
@@ -109,7 +109,7 @@
             success: (response) => {
                 toastr.success(response.message)
                 document.getElementById(response.data).remove();
-                
+
             },
             error: (error) => {
                 console.log(error.responseText);
@@ -118,10 +118,17 @@
     }
 
 
-    function handlePreview(event)
-    {
-        console.log(1);
+    function handlePreview(event) {
+        if (event.target.files && event.target.files[0]) {
+            const fr = new FileReader();
+            fr.onload = (e) => {
+                // Use the correct syntax for setting the 'src' attribute of an image
+                // and selecting the image element using its ID
+                $('#preview').attr('src', e.target.result);
+                $('#preview').css('display', 'initial');
+            };
+            fr.readAsDataURL(event.target.files[0]);
+        }
     }
-    
 }
 
