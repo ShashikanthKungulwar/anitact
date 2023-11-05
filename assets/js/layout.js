@@ -116,5 +116,12 @@
             }
         })
     }
+
+
+    function handlePreview(event)
+    {
+        console.log(1);
+    }
+    
 }
 

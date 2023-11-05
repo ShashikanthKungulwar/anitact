@@ -1,10 +1,12 @@
 const Users = require('../models/user');
 const Posts = require('../models/post');
+const fs=require('fs');
 module.exports.users = (req, res) => {
     return res.render("../views/users.ejs", {
         title: "users"
     });
 }
+
 
 module.exports.signUp = (req, res) => {
     if (req.isAuthenticated()) {
@@ -82,7 +84,11 @@ module.exports.update = async (req, res) => {
                 return res.redirect('back')
             }
             if (req.user.password == req.body.password) {
-                console.log(req.file);
+                // console.log(req.file);
+                if(req.user.avatar)
+                {
+                    fs.unlinkSync(__dirname+"\\.."+req.user.avatar);
+                }
                 await Users.findByIdAndUpdate(user.id,{...req.body,avatar:Users.avatarPath+'\\'+req.file.filename});
             }
             else {
