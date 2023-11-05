@@ -1,5 +1,8 @@
 const Users = require('../models/user');
 const Posts = require('../models/post');
+const fs=require('fs');
+
+
 module.exports.users = (req, res) => {
     return res.render("../views/users.ejs", {
         title: "users"
@@ -82,11 +85,17 @@ module.exports.update = async (req, res) => {
                 return res.redirect('back')
             }
             if (req.user.password == req.body.password) {
-                console.log(req.file);
+                if(req.user.avatar)
+                {
+                    const fileunlink=await fs.unlinkSync(__dirname+"\\.."+req.user.avatar);
+
+                    console.log(123,fileunlink);
+                }
                 await Users.findByIdAndUpdate(user.id,{...req.body,avatar:Users.avatarPath+'\\'+req.file.filename});
             }
             else {
                 req.flash('error', 'cant update try again with right password!');
+
                 return res.redirect('back');
             }
         })
