@@ -5,7 +5,7 @@
         <h1>Update Form</h1>
         <input name="email" value="<%=user.email%>" required placeholder="enter tour email" type="email" />
         <input name="name" value="<%=user.name%>" required placeholder="enter your name" />
-        <input name="password" required placeholder="enter your password" />
+        <input name="password" required placeholder="enter your password" type="password"/>
         <input type="file" name="avatar" placeholder="upload file" required onchange="return handlePreview(event)" />
         <button>update</button>
     </form>

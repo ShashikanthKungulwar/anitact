@@ -4,5 +4,5 @@ const post_api=require('../../../contollers/api/v1/posts_api');
 
 
 router.get('/',post_api.index);
-
+router.delete('/:id',post_api.destroy);
 module.exports= router;

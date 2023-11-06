@@ -5,6 +5,7 @@ const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const passport = require('passport');
 const passportLocal = require('./config/passport_local_startegy');
+const passportJWT=require('./config/passport_jwt_strategy');
 const session = require('express-session');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser=require('body-parser');
@@ -63,6 +64,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+// app.use()
 app.use(flash());
 app.use(flashMiddleware.setFlash);
 app.use('/', require('./routes/index'));
