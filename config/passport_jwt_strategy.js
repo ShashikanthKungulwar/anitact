@@ -12,13 +12,15 @@ const opts = {
 passport.use(new JWTStrategy(opts,
     async function (jwt_payload, done) {
         try {
-            const user=await Users.findById(jwt_payload._id).exec;
+            const user=await Users.findById(jwt_payload._id).exec();
             if(user)
             {
+                
                 return done(null,user);
             }
             else
             {
+                console.log(1230);
                 return done(null,false)
             }
         }

@@ -4,7 +4,7 @@ const Users=require('../../../models/user');
 
 module.exports.createSession=async (req,res)=>{
     try{
-        let user=await Users.findOne({email:req.body.email}).exec();
+        var user=await Users.findOne({email:req.body.email}).exec();
         if(!user || user.password != req.body.password)
         {
             return res.json(422,{
@@ -14,7 +14,7 @@ module.exports.createSession=async (req,res)=>{
         return res.json(200,{
             message:"successful login",
             data:{
-                token:jwt.sign(user.toJSON(),'anitact',{expiresIn:'10000'})
+                token:jwt.sign(user.toJSON(),'anitact',{expiresIn:'1000000'})
             }
         })
     }
