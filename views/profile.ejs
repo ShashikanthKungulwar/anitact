@@ -1,26 +1,31 @@
 <div id="profile">
     <h1><i class="fa-solid fa-user fa-xs"></i> PROFILE</h1>
     <link rel="stylesheet" href="/css/profile.css" />
-    <img src="<%=user.avatar%>" style="height: 200px;width: 200px;object-fit: contain;"/>
-    <table>
-        <tr>
-            <h2>
-                <td>email:</td>
-                <td>
-                    <%=user_profile.email||user.email%>
-                </td>
-            </h2>
-        </tr>
-        <tr>
-            <h2>
-                <td>name:</td>
-                <td>
-                    <%=user_profile.name||user.name%>
-                </td>
-            </h2>
-        </tr>
-    </table>
-    <% if(locals.user_profile.id==locals.user.id) {%>
-        <a href="update">click here to update your profile</a>
-    <%}%>
+    <%if(user.avatar){%>
+        <img src="<%=user.avatar%>" style="height: 200px;width: 200px;object-fit: contain;" />
+        <%}else{%>
+            <img src="/images/profile.jpeg" style="height: 200px;width: 200px;object-fit: contain;" />
+            <% }%>
+
+                <table>
+                    <tr>
+                        <h2>
+                            <td>email:</td>
+                            <td>
+                                <%=user_profile.email||user.email%>
+                            </td>
+                        </h2>
+                    </tr>
+                    <tr>
+                        <h2>
+                            <td>name:</td>
+                            <td>
+                                <%=user_profile.name||user.name%>
+                            </td>
+                        </h2>
+                    </tr>
+                </table>
+                <% if(locals.user_profile.id==locals.user.id) {%>
+                    <a href="update">click here to update your profile</a>
+                    <%}%>
 </div>

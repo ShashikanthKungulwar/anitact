@@ -53,7 +53,7 @@ module.exports.create = async (req, res) => {
 
 module.exports.createSession = (req, res) => {
     req.flash('success', 'successfylly logged in');
-    return res.redirect("./profile");
+    return res.redirect("/users/profile");
 }
 
 module.exports.destroySession = (req, res, next) => {

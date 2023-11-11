@@ -6,6 +6,7 @@ const db = require('./config/mongoose');
 const passport = require('passport');
 const passportLocal = require('./config/passport_local_startegy');
 const passportJWT=require('./config/passport_jwt_strategy');
+const passportGoogleAuth=require('./config/passport_google_auth2')
 const session = require('express-session');
 const sassMiddleware = require('node-sass-middleware');
 const bodyParser=require('body-parser');
