@@ -1,7 +1,8 @@
 const Posts = require("../models/post");
 const Comments = require("../models/comments")
 const commentsMailer=require('../mailers/comments_mailer');
-
+const commentsEmailWorker=require('../workers/comment_email_worker');
+const commentsQueue=require('../config/kue');
 
 module.exports.create = async (req, res) => {
     console.log(req.body);
@@ -19,9 +20,25 @@ module.exports.create = async (req, res) => {
             post.save();
             console.log("comment added to the post");
             // req.flash('success','comment posted')
+
             await comment.populate('user');
+            
             if(req.xhr){
-                commentsMailer.newComment(comment);
+                // commentsMailer.newComment(comment);
+
+
+                //job_for_comments_email_worker emails is the process name(worker)
+                const job=commentsQueue.create('emails',comment).save((err)=>{
+                    if(err)
+                    {
+                        console.log('error in commentersController',err);
+                        return;
+                    }
+                    console.log('job queued :',job.id);
+                });
+
+
+
                 return res.status(200).json({
                     data:comment,
                     message:"comment successfully created"

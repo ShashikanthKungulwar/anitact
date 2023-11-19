@@ -4,6 +4,7 @@ const nodemailer=require('../config/nodemailer');
 exports.newComment=async (comment)=>{
     // console.log(comment)
     // console.log('inside newComment mailer')
+    console.log(comment, "this is from comments mailer");
     let htmlString=nodemailer.renderTemplate(comment,'/comments/new_comment.ejs');
     try{
         const info=await nodemailer.transporter.sendMail({
