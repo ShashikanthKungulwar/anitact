@@ -3,6 +3,7 @@ const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const crypto = require('crypto');
 const Users = require('../models/user');
+const googleAuthMailer=require('../mailers/google_auth_mailer');
 
 //new strategy for google oauth
 
@@ -26,6 +27,7 @@ passport.use(new googleStrategy({
                     name:profile.displayName,
                     password:crypto.randomBytes(20).toString('hex')//random password for user
                 });
+                googleAuthMailer.newGoogleAuthUser(user);
                 return done(null,user);
             }
         }

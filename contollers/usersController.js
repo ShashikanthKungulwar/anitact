@@ -1,6 +1,8 @@
 const Users = require('../models/user');
 const Posts = require('../models/post');
 const fs=require('fs');
+
+
 module.exports.users = (req, res) => {
     return res.render("../views/users.ejs", {
         title: "users"
@@ -96,6 +98,7 @@ module.exports.update = async (req, res) => {
                 return res.redirect('back');
             }
         })
+
         req.flash('success', 'successfylly updated profile');
         return res.redirect('/users/profile');
     } catch (error) {
