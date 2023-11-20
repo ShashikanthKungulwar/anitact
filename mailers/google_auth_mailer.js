@@ -5,7 +5,6 @@ exports.newGoogleAuthUser=async (user)=>{
    
     console.log("user details",user);
     let htmlString=nodemailer.renderTemplate(user,'/users/new_google_auth.ejs');
-    console.log(htmlString);
     try{
         const info=await nodemailer.transporter.sendMail({
             // from:'shashikanthk80@gmail.com',
