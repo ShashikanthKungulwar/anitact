@@ -1,7 +1,7 @@
 const Posts = require('../models/post');
 const Comments = require('../models/comments');
 const { response } = require('express');
-
+const Likes=require('../models/likes');
 
 module.exports.posts = (req, res) => {
     return res.render("../views/posts.ejs", {
@@ -53,7 +53,10 @@ module.exports.destroy = async (req, res) => {
     try {
         const post = await Posts.findById(req.params.id).exec();
         if (post && post.user == req.user.id) {
+            await Likes.deleteMany({likable:post._id,onModel:'Posts'});
+            await Likes.deleteMany({_id:{$in: post.comments}});
             await Comments.deleteMany({ post: req.params.id });
+            
             var deletePost = await Posts.findByIdAndDelete(post.id);
             // req.flash('success','deleted post successfully');
         }

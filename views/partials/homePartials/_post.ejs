@@ -6,6 +6,16 @@
                 <span>name:<%=post.user.name%></span>
                 <br>
                 <span>content:<%=post.content%></span>
+                <span>
+                    <%if(locals.user){%>
+                    <a class="toggle-like" href="/likes/toggle?id=<%=post.id%>&type=<%='Posts'%>">
+                    <%=post.likes.length%> Likes
+                    </a>
+                    <%}else{%>
+
+                    <%=post.likes.length%> Likes
+                    <%}%>
+                </span>
                 <div class="comment-section">
                     <% if(locals.user) {%>
                         <form action="/comments/create" method="post" onsubmit="return handleCommentPosting(event)">

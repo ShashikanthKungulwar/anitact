@@ -10,5 +10,6 @@ router.use('/posts',require('./posts'));
 router.use('/api',require('./api'));
 router.use('/comments',require('./comments'));
 router.use('/reset-password',require('./password_reset.js'))
-console.log("running")
+router.use('/likes',require('./likes'));
+
 module.exports = router;

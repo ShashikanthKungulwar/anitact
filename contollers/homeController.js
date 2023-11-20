@@ -9,8 +9,11 @@ module.exports.home = async (req, res) => {
                 path: "comments",
                 populate: {
                     path: 'user'
+                },
+                populate:{
+                    path:'likes'
                 }
-            }).exec();
+            }).populate('likes').exec();
 
         // posts.commnets.sort('-createdAt');not woriking find later
 

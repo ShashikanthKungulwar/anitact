@@ -3,10 +3,19 @@
         <% for(comment of post.comments) {%>
             <li class="comment" id="<%=comment._id%>">
                 <% if(locals.user && (locals.user.id==post.user.id || comment.user.id==user.id)) {%>
-                <a href="/comments/destroy/<%=comment.id %>" onclick="return handleCommnetDelete(event)">X</a>
-                <%}%>
-                comment:<%=comment.content %>
-                    user:<%=comment.user.name%>
+                    <a href="/comments/destroy/<%=comment.id %>" onclick="return handleCommnetDelete(event)">X</a>
+                    <%}%>
+                        comment:<%=comment.content %>
+                            user:<%=comment.user.name%>
+                                <span>
+                                    <%if(locals.user){%>
+                                    <a class="toggle-like"
+                                        href="/likes/toggle?id=<%=comment.id%>&type=<%='Comments'%>"><%=comment.likes.length%> Likes</a>
+                                    <%}else{%>
+                                        <%=comment.likes.length%> Likes
+                                    <%}%>
+                                    
+                                </span>
             </li>
             <%}%>
     </ul>
