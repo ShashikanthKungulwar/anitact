@@ -10,7 +10,7 @@ exports.sendResetPasswordLink=async(data)=>{
             html:htmlString
         });
     }
-    catch{
-
+    catch(error){
+        console.log(error,'error in reset-password-mailer.js in mailers')
     }
 }
