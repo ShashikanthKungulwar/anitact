@@ -51,3 +51,11 @@
             <%}%>
     </section>
     <%}%>
+<script src="/js/toggle-like.js"></script>
+<script>
+    $('.toggle-like').each(function()
+    {
+        let self=this;
+        let toggleLike=new ToggleLike(self)
+    })
+</script>

@@ -22,7 +22,7 @@ module.exports.toggleLike = async (req, res) => {
             deleted = true;
             likable.likes.pull(existingLike._id);
             likable.save();
-            existingLike.remove();
+            await Likes.findByIdAndDelete(existingLike._id);
         }
         else {
             const newLike = await Likes.create({
@@ -36,7 +36,8 @@ module.exports.toggleLike = async (req, res) => {
         return res.status(200).json({
             message: "Request successful",
             data: {
-                deleted
+                deleted,
+                
             }
         })
 

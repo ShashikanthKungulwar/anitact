@@ -9,8 +9,7 @@
                             user:<%=comment.user.name%>
                                 <span>
                                     <%if(locals.user){%>
-                                    <a class="toggle-like"
-                                        href="/likes/toggle?id=<%=comment.id%>&type=<%='Comments'%>"><%=comment.likes.length%> Likes</a>
+                                    <a class="toggle-like" data-likes="<%=comment.likes.length%>" href="/likes/toggle?id=<%=comment.id%>&type=<%='Comments'%>"><%=comment.likes.length%> Likes</a>
                                     <%}else{%>
                                         <%=comment.likes.length%> Likes
                                     <%}%>

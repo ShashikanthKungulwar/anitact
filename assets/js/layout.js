@@ -25,7 +25,7 @@
 
     const addPostToHome = (post) => {
         const ulRef = $('#posts-list-container');
-        ulRef.prepend(
+        let ref=ulRef.prepend(
             `<div id="${post._id}">
         
             <a href="/posts/destroy/${post._id}" onclick="return handlePostDelete(event)">X</a>
@@ -33,6 +33,11 @@
                 <span>name:${post.user.name}</span>
                 <br>
                 <span>content:${post.content}</span>
+                <span>
+                    <a class="toggle-like" href="/likes/toggle?id=${post._id}&type=Posts" data-likes='0'> 
+                    0 Likes
+                    </a>
+                </span>
                 <div class="comment-section">
                 
                         <form action="/comments/create" method="post" onsubmit="return handleCommentPosting(event)">
@@ -48,6 +53,7 @@
                 </div>
     </div>`
         )
+        new ToggleLike($('.toggle-like',ref));
     }
 
 
@@ -92,12 +98,18 @@
     function addCommnetToPost(comment) {
         console.log(`${comment.post}comments`);
         const ulRef = $(`#${comment.post}comments`)
-        ulRef.append(`<li class="comment" id="${comment._id}">
+        let ref=ulRef.append(`<li class="comment" id="${comment._id}">
             
                 <a href="/comments/destroy/${comment._id}" onclick="return handleCommnetDelete(event)" >X</a>
                 comment:${comment.content}
                     user:${comment.user.name}
+                    <span>
+                    <a class="toggle-like" href="/likes/toggle?id=${comment._id}&type=Comments" data-likes='0'> 
+                    0 Likes
+                    </a>
+                    </span>
             </li>`)
+        new ToggleLike($('.toggle-like',ref));
     }
 
 
