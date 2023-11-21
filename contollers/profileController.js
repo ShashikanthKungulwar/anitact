@@ -5,10 +5,19 @@ module.exports.profile=async (req,res)=>{
     var user_profile=await Users.findById(req.params.id);
     else
     var user_profile=req.user;
-    console.log(user_profile);
+
+
+    const idx=user_profile.friendship.indexOf(req.user._id);
+    let isFriend=true;
+    if(idx==-1)
+    {
+        isFriend=false;
+    }
+
     return res.render("../views/profile.ejs",{
         title:"profile",
-        user_profile
+        user_profile,
+        isFriend
     });
 }
 

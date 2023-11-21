@@ -25,7 +25,15 @@
                         </h2>
                     </tr>
                 </table>
+                <% if(locals.user_profile.id!=locals.user.id) {%>
+                    <%if(locals.isFriend){%>
+                        <button onclick="return handleAddRemoveFriend(event)" data-id="<%=user_profile._id%>">Remove Friend</button>
+                    <%}else{%>
+                        <button onclick="return handleAddRemoveFriend(event)" data-id="<%=user_profile._id%>">Add Friend</button>
+                    <%}%>
+                <%}%>
                 <% if(locals.user_profile.id==locals.user.id) {%>
                     <a href="update">click here to update your profile</a>
-                    <%}%>
+               <%}%>
 </div>
+<script src="/js/toggle-friendship.js"></script>
