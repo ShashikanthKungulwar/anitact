@@ -23,7 +23,9 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     friendship:[
-       {type:mongoose.Schema.Types.ObjectId}
+       {type:mongoose.Schema.Types.ObjectId,
+        ref:'Users'
+    }
     ]
 }, {
     timestamps: true

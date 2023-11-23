@@ -1,8 +1,10 @@
 <link href="/css/home.css" rel="stylesheet">
 <section id="navigation-container">
     <ul>
-        
-        <h3><%= locals.user && locals.user.name %></h3>
+
+        <h3>
+            <%= locals.user && locals.user.name %>
+        </h3>
         <a href="/">
             <li><i class="fa-solid fa-house" style="color: #ffffff;"></i> Home</li>
         </a>
@@ -18,8 +20,8 @@
     <div>
         <h1>Posts</h1>
         <% if(locals.user){ %>
-            <form action="/posts/create" method="POST" id="postForm" onsubmit="return handlePostSubmit(event)" >
-                
+            <form action="/posts/create" method="POST" id="postForm" onsubmit="return handlePostSubmit(event)">
+
                 <textarea placeholder="type here" name="content" required></textarea>
                 <button>SUBMIT</button>
             </form>
@@ -34,28 +36,52 @@
 
 </section>
 
+<div id="list-container">
+    <% if(locals.user) { %>
+        <% if(locals.friends.length!=0){%>
+            <section id="friends-list">
 
-<% if(locals.user) { %>
-    <section id="friends-list">
-        <% if(locals.users_list){ %>
-            <ul>
-                <h3>Friends</h3>
-                <%for(let user1 of users_list){%>
-                    <a href="/users/profile/<%=user1.id%>">
+                <ul>
+                    <h3>Friends</h3>
+                    <%for(let friend of friends){%>
+
+
                         <li>
-                            <%=user1.name%>
+                            <a href="/users/profile/<%=friend.id%>">
+                                <%=friend.name%>
+                            </a>
+                            <span data-id="<%=friend.id%>" onclick="return handleAddRemoveFriend(event)">X</span>
                         </li>
-                    </a>
-                    <%}%>
-            </ul>
+
+
+
+                        <%}%>
+
+                </ul>
+
+            </section>
             <%}%>
-    </section>
-    <%}%>
+                <%}%>
+                    <section id="users-list">
+                        <% if(locals.users_list){ %>
+                            <ul>
+                                <h3>Users</h3>
+                                <%for(let user1 of users_list){%>
+                                    <a href="/users/profile/<%=user1.id%>">
+                                        <li>
+                                            <%=user1.name%>
+                                        </li>
+                                    </a>
+                                    <%}%>
+                            </ul>
+                            <%}%>
+                    </section>
+</div>
 <script src="/js/toggle-like.js"></script>
+<script src="/js/home.js"></script>
 <script>
-    $('.toggle-like').each(function()
-    {
-        let self=this;
-        let toggleLike=new ToggleLike(self)
+    $('.toggle-like').each(function () {
+        let self = this;
+        let toggleLike = new ToggleLike(self)
     })
 </script>

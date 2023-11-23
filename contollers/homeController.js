@@ -9,13 +9,17 @@ module.exports.home = async (req, res) => {
                 path: "comments",
                 populate: {
                     path: 'user',
-                    
+
                 },
             }).populate('likes').exec();
 
         // posts.commnets.sort('-createdAt');not woriking find later
 
-        var users =await Users.find({}).exec();
+        var users = await Users.find({}).exec();
+        if (req.user) {
+            let user = await Users.findById(req.user._id).populate('friendship').exec();
+            var friends = user.friendship;
+        }
     }
     catch (error) {
         console.log(error);
@@ -24,7 +28,8 @@ module.exports.home = async (req, res) => {
         return res.render("../views/home.ejs", {
             title: "home",
             posts,
-            users_list:users
+            users_list: users,
+            friends
         });
     }
 }

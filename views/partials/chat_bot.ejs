@@ -1,0 +1,20 @@
+
+<link href="/css/chat-bot.css"/>
+<%if(locals.user){%>
+    <div class="chat-bot">
+        <div class="chat-box">
+            <ul>
+                <li class="others-msg">
+                    others msg
+                </li>
+                <li class="my-msg">
+                    my msg
+                </li>
+            </ul>
+        </div>
+        <div class="message-box">
+            <input placeholder="enter message" />
+            <button>Send</button>
+        </div>
+    </div>
+<%}%>
