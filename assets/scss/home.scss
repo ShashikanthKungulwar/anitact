@@ -1,13 +1,12 @@
 body {
     color: white;
     height: 100vh;
-
     main {
         background-color: black;
         display: flex;
+        
         scroll-margin-top: 50px;
         scroll-margin-bottom: 50px;
-
         #navigation-container {
             display: flex;
             justify-content: center;
@@ -16,11 +15,14 @@ body {
             padding-top: 10%;
             box-sizing: border-box;
         }
-
+        main{
+            overflow: hidden;
+        }
         #posts-container {
+            overflow: hidden;
             width: 50%;
             text-align: center;
-
+            position: relative;
             form#postForm {
                 background-color: rgba(255, 255, 255, 0.2);
                 box-shadow: -0.5px -12px 18.5px -0.5px #0f1723;
@@ -57,8 +59,8 @@ body {
             }
 
             #posts-list-container {
-                max-height: 500px;
-                overflow-y: scroll;
+                max-height:400px;
+                overflow:auto;
                 border-radius: 10px;
                 padding: 5px;
 
@@ -88,6 +90,7 @@ body {
             width: 30%;
             height: 90%;
             position: relative;
+            display: flex;
 
             #friends-list {
                 width: 100%;
@@ -124,5 +127,7 @@ body {
                 }
             }
         }
+
+        
     }
 }

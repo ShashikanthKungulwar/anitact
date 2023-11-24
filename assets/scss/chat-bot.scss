@@ -1,0 +1,71 @@
+/* Light theme for chat bot */
+.chat-bot {
+    position: fixed;
+    bottom: 50px;
+    right: 1vw;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Light background color */
+    color: #333; /* Dark text color */
+    // box-shadow: -0.5px -12px 18.5px -0.5px #d3d3d3; /* Lighter shadow color */
+    ul {
+        list-style: none;
+        width: 300px;
+        height: 270px;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 5px;
+        padding-inline: 15px;
+        gap: 3px;
+        overflow: auto;
+        li {
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .others-msg {
+            max-width: 70%;
+            align-self: flex-start;
+            background-color: #e0e0e0; /* Lighter background for others' messages */
+            border: 1px solid #ccc; /* Slightly darker border */
+            color: #333; /* Dark text color */
+        }
+        .my-msg {
+            max-width: 70%;
+            align-self: flex-end;
+            background-color: #d3d3d3; /* Lighter background for my messages */
+            border: 1px solid #ccc; /* Slightly darker border */
+            color: #333; /* Dark text color */
+        }
+    }
+}
+
+/* Light theme for message box */
+.message-box {
+    display: flex;
+
+    input {
+        flex: 3;
+        border: 2px solid #ccc; /* Slightly darker border */
+        border-radius: 10px;
+        padding: 8px;
+        margin-right: 8px; /* Add some spacing between input and button */
+        color: #333; /* Dark text color */
+        background-color: #f5f5f5; /* Light background color */
+    }
+
+    button {
+        flex: 1;
+        border: 2px solid #4caf50;
+        border-radius: 20px;
+        background-color: #4caf50; /* Green color for the button */
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+}

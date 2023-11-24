@@ -18,9 +18,15 @@ body main #navigation-container {
   box-sizing: border-box;
 }
 
+body main main {
+  overflow: hidden;
+}
+
 body main #posts-container {
+  overflow: hidden;
   width: 50%;
   text-align: center;
+  position: relative;
 }
 
 body main #posts-container form#postForm {
@@ -59,8 +65,8 @@ body main #posts-container form#postForm button:hover {
 }
 
 body main #posts-container #posts-list-container {
-  max-height: 500px;
-  overflow-y: scroll;
+  max-height: 400px;
+  overflow: auto;
   border-radius: 10px;
   padding: 5px;
   /* Customize the scrollbar */
@@ -89,6 +95,7 @@ body main #list-container {
   width: 30%;
   height: 90%;
   position: relative;
+  display: flex;
 }
 
 body main #list-container #friends-list {
